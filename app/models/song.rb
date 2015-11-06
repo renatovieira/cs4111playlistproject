@@ -16,4 +16,8 @@ class Song < ActiveRecord::Base
   def to_s
     self.title
   end
+  
+  def embed_url
+    "http://www.youtube.com/embed/" + self.url.split('/watch?v=')[-1]
+  end
 end

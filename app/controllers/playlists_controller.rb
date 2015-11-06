@@ -4,7 +4,11 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.json
   def index
-    @playlists = Playlist.all
+    @playlists = Playlist.all.sort_by {|obj| obj.name}
+  end
+  
+  def my_playlists
+    @playlists = @logged_in_user.playlists.sort_by {|obj| obj.name}
   end
 
   # GET /playlists/1

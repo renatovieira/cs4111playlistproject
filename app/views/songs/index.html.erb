@@ -16,15 +16,14 @@
   <tbody>
     <% @songs.each do |song| %>
       <tr>
-        <td><%= song.title %></td>
-        <td><%= song.duration %></td>
+        <td><%= link_to song.title, song %></td>
+        <td><%= Time.at(song.duration).utc.strftime("%M:%S") %></td>
         <td><%= song.url %></td>
         <td><%= song.artists.join(',') %></td>
-        <td><%= link_to 'Show', song %></td>
-	  	<% if @is_admin %>
+	  		<% if @is_admin %>
         	<td><%= link_to 'Edit', edit_song_path(song) %></td>
         	<td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<% end %>	
+				<% end %>	
       </tr>
     <% end %>
   </tbody>

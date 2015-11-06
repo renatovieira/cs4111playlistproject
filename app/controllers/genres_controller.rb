@@ -4,7 +4,7 @@ class GenresController < ApplicationController
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.all
+    @genres = Genre.all.sort_by {|obj| obj.name}
   end
 
   # GET /genres/1
