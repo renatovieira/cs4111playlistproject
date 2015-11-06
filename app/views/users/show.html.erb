@@ -20,5 +20,27 @@
 	<%= @user.playlists.join(',') %>
 </p>
 
+<p>
+	<strong>Following:</strong>
+	<ul>
+		<% @user.following.each do |followed| %>
+			<li>
+    			<%= link_to followed.username, followed %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
+<p>
+	<strong>Followers:</strong>
+	<ul>
+		<% @user.followers.each do |follower| %>
+			<li>
+    			<%= link_to follower.username, follower %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
