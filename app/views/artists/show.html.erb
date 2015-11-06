@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= Country.find(@artist.country_id).name  %>
+</p>
+
+<p>
+	<strong>Genres:</strong>
+	<ul>
+		<% @artist.genres.each do |genre| %>
+			<li>
+    			<%= link_to genre.name, genre %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %>

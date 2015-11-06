@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @song.title %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @song.duration %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @song.url %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @song.source %>
+</p>
+
+<p>
+	<strong>Genres:</strong>
+	<ul>
+		<% @song.genres.each do |genre| %>
+			<li>
+    			<%= link_to genre.name, genre %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>

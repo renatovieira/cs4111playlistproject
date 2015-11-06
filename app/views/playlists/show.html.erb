@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @playlist.name %>
+</p>
+
+<% if @playlist.is_public %>
+	<p>
+  	  <strong>Public</strong>
+	</p>
+<% end %>
+
+<p>
+	<strong>Songs:</strong>
+	<ul>
+		<% @playlist.songs.each do |song| %>
+			<li>
+    			<%= link_to song.title, song %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
+<p>
+	<strong>Collaborators:</strong>
+	<ul>
+		<% @playlist.collaborators.each do |collaborator| %>
+			<li>
+    			<%= link_to collaborator.username, collaborator %>
+			</li>
+		<% end %>
+	</ul>
+</p>
+
+<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<%= link_to 'Back', playlists_path %>
