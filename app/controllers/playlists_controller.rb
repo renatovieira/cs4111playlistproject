@@ -32,6 +32,8 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.save
+        CollaboratesIn.create(user: @logged_in_user, playlist: @playlist)
+        
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
         format.json { render :show, status: :created, location: @playlist }
       else
