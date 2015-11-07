@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  helper_method :requested_access, :is_collaborator
 
   # GET /playlists
   # GET /playlists.json
@@ -65,6 +66,14 @@ class PlaylistsController < ApplicationController
       format.html { redirect_to playlists_url, notice: 'Playlist was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def is_collaborator(playlist)
+    @logged_in_user.playlists.include? (playlist)
+  end
+  
+  def requested_access(playlist)
+    @logged_in_user.requested_playlists.include? (playlist)
   end
 
   private
