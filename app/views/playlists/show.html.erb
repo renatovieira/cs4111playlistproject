@@ -33,5 +33,7 @@
 	</ul>
 </p>
 
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<% if @is_admin %>
+	<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<% end %>
 <%= link_to 'Back', playlists_path %>

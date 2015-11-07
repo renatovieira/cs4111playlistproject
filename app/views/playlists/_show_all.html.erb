@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+			<th>Number of songs</th>
 			<th>Collaborator status</th>
       <th colspan="3"></th>
     </tr>
@@ -16,6 +17,7 @@
 			<% if playlist.is_public or @is_admin or @logged_in_user.playlists.include? (playlist)  %>
 	      <tr>
 	        <td><%= link_to playlist.name, playlist %></td>
+	        <td><%= playlist.songs.size %></td>
 					
 					<% if is_collaborator(playlist) %>
 						<td><%= 'Collaborating' %></td>

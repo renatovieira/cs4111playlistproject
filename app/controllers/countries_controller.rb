@@ -10,6 +10,7 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.json
   def show
+    @artists = Artist.where(country_id: params[:id])
   end
 
   # GET /countries/new

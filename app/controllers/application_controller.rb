@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_admin_status
   def set_admin_status
-    @logged_in_user = User.find(2)
+    @logged_in_user = User.find(3)
     @is_admin = @logged_in_user.admin
   end
 end

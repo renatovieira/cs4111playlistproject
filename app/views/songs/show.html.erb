@@ -26,5 +26,7 @@
 	</ul>
 </p>
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
+<% if @is_admin %>
+	<%= link_to 'Edit', edit_song_path(@song) %> |
+<% end %>
 <%= link_to 'Back', songs_path %>

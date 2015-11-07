@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
+			<th>Number of Songs</th>
       <th>Year</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @albums.each do |album| %>
       <tr>
         <td><%= link_to album.title, album %></td>
+        <td><%= album.songs.size %></td>
         <td><%= album.year %></td>
 	  		<% if @is_admin %>
         	<td><%= link_to 'Edit', edit_album_path(album) %></td>
