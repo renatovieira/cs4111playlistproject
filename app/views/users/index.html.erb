@@ -24,16 +24,11 @@
         <td><%= user.followers.size %></td>
         <td><%= user.following.size %></td>
 				<td>
-					<% if is_friend(user) %>
-						Friends
-					<% elsif user != @logged_in_user %>
-						<% if is_follower(user) %>
-							Follower
-						<% end %>
+					<% if user != @logged_in_user %>
 						<% if is_following(user) %>
-							Following
+							Unfollow
 						<% else %>
-							Follow
+							Follow				
 						<% end %>
 					<% end %>
 				</td>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  helper_method :is_friend, :is_follower, :is_following
+  helper_method :is_following
 
   # GET /users
   # GET /users.json
@@ -60,14 +60,6 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-  
-  def is_friend(user)
-    is_follower(user) and is_following(user)
-  end
-  
-  def is_follower(user)
-    @logged_in_user.followers.include? (user)
   end
   
   def is_following(user)

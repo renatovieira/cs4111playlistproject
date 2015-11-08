@@ -51,7 +51,9 @@
     <% end %>
 
     <%= yield %>
-		Logged in as <%= @logged_in_user.username %>
   </div>
+	<div class="container">
+		Logged in as <%= @logged_in_user.username %>
+	</div>
 </body>
 </html>

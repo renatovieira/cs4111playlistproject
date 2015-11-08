@@ -7,7 +7,17 @@
 
 <p>
   <strong>Duration:</strong>
-  <%= @song.duration %>
+  <%= Time.at(@song.duration).utc.strftime("%M:%S") %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @song.artists.join(',') %>
+</p>
+
+<p>
+  <strong>Album:</strong>
+  <%= @song.albums.join(',') %>
 </p>
 
 <% if @song.source == 'Youtube' %>
