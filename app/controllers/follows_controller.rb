@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :set_follow, only: [:show, :edit, :update, :destroy]
+  before_action :set_follow, only: [:show, :edit, :update]
 
   # GET /follows
   # GET /follows.json
@@ -28,7 +28,7 @@ class FollowsController < ApplicationController
 
     respond_to do |format|
       if @follow.save
-        format.html { redirect_to @follow, notice: 'Follow was successfully created.' }
+        format.html { redirect_to '/users', notice: "Now following #{User.find([params[:following_id]]).first.username}." }
         format.json { render :show, status: :created, location: @follow }
       else
         format.html { render :new }
@@ -54,9 +54,13 @@ class FollowsController < ApplicationController
   # DELETE /follows/1
   # DELETE /follows/1.json
   def destroy
-    @follow.destroy
+    follows = Follow.where(follower_id: params[:follower_id])
+    follows.each do |follow|
+      follow.destroy if follow.following_id = params[:following_id]
+    end
+    
     respond_to do |format|
-      format.html { redirect_to follows_url, notice: 'Follow was successfully destroyed.' }
+      format.html { redirect_to '/users', notice: "Unfollowed #{User.find([params[:following_id]]).first.username}." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,6 @@ class FollowsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follow_params
-      params.require(:follow).permit(:follower_id, :following_id, :since)
+      params.permit(:follower_id, :following_id, :since)
     end
 end
