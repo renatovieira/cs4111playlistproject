@@ -1,6 +1,13 @@
-<h1>Editing Album</h1>
+<div class="page-header">
+  <%= link_to albums_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @album, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing album</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>

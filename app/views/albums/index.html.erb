@@ -1,34 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+	<% if @is_admin %>
+	  <%= link_to new_album_path, class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-plus"></span>
+	    New Album
+	  <% end %>
+  <% end %>
+  <h1>Listing albums</h1>
+</div>
 
-<h1>Listing Albums</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-			<th>Number of Songs</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= link_to album.title, album %></td>
-        <td><%= album.songs.size %></td>
-        <td><%= album.year %></td>
-	  		<% if @is_admin %>
+            <th>Title</th>
+						<th>Number of Songs</th>
+            <th>Year</th>
+				<% if @is_admin %>	
+					<th></th>
+        	<th></th>
+			  <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @albums) do |album| %>
+						<td><%= link_to album.title, album %></td>
+		        <td><%= album.songs.size %></td>
+            <td><%= album.year %></td>
+			  <% if @is_admin %>		
         	<td><%= link_to 'Edit', edit_album_path(album) %></td>
         	<td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	  		<% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if @is_admin %>
-	<%= link_to 'New Album', new_album_path %>
-<% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

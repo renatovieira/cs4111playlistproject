@@ -1,27 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to albums_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+		<% if @is_admin %>
+	  <%= link_to edit_album_path(@album), class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-pencil"></span>
+	    Edit
+	  <% end %>
+	<% end %>
+  <h1>Show album</h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @album.title %></dd>
 
-<p>
-  <strong>Year:</strong>
-  <%= @album.year %>
-</p>
+  <dt>Year:</dt>
+  <dd><%= @album.year %></dd>
 
-<p>
-	<strong>Songs:</strong>
-	<ul>
-		<% @album.songs.each do |song| %>
-			<li>
-    			<%= link_to song.title, song %>
-			</li>
-		<% end %>
-	</ul>
-</p>
-
-<% if @is_admin %>
-	<%= link_to 'Edit', edit_album_path(@album) %> |
-<% end %>
-<%= link_to 'Back', albums_path %>
+	<dt>Songs:</dt>
+	<dd><ul>
+			<% @album.songs.each do |song| %>
+				<li>
+	    			<%= link_to song.title, song %>
+				</li>
+			<% end %>
+	</ul></dd>
+</dl>
