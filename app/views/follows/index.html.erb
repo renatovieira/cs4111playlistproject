@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_follow_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Follow
+  <% end %>
+  <h1>Listing follows</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Follower</th>
+            <th>Following</th>
+            <th>Since</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @follows) do |follow| %>
+            <td><%= follow.follower_id %></td>
+            <td><%= follow.following_id %></td>
+            <td><%= follow.since %></td>
+            <td><%= link_to 'Show', follow %></td>
+        <td><%= link_to 'Edit', edit_follow_path(follow) %></td>
+        <td><%= link_to 'Destroy', follow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

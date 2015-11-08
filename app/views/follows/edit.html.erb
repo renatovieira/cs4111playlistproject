@@ -1,13 +1,13 @@
 <div class="page-header">
-  <%= link_to countries_path, class: 'btn btn-default' do %>
+  <%= link_to follows_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to @country, class: 'btn btn-primary' do %>
+  <%= link_to @follow, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
     Show
   <% end %>
-  <h1>Editing country</h1>
+  <h1>Editing follow</h1>
 </div>
 
 <%= render 'form' %>

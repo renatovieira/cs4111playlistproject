@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to follows_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_follow_path(@follow), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show follow</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Follower:</dt>
+  <dd><%= @follow.follower_id %></dd>
+
+  <dt>Following:</dt>
+  <dd><%= @follow.following_id %></dd>
+
+  <dt>Since:</dt>
+  <dd><%= @follow.since %></dd>
+
+</dl>

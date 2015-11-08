@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :countries
+  resources :countries
+  resources :follows
   resources :users
   resources :songs
   resources :playlists
