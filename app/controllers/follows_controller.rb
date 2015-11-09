@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_action :set_follow, only: [:show, :edit, :update]
+  before_action :set_follow, only: [:show, :edit, :update, :destroy]
 
   # GET /follows
   # GET /follows.json
@@ -54,10 +54,7 @@ class FollowsController < ApplicationController
   # DELETE /follows/1
   # DELETE /follows/1.json
   def destroy
-    follows = Follow.where(follower_id: params[:follower_id])
-    follows.each do |follow|
-      follow.destroy if follow.following_id = params[:following_id]
-    end
+    @follow.destroy    
     
     respond_to do |format|
       format.html { redirect_to '/users', notice: "Unfollowed #{User.find([params[:following_id]]).first.username}." }
@@ -68,7 +65,7 @@ class FollowsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_follow
-      @follow = Follow.find(params[:id])
+      @follow = Follow.find([params[:id], params[:following_id]])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

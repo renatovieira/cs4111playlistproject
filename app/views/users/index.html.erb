@@ -26,7 +26,7 @@
 				<td>
 					<% if user != @logged_in_user %>
 						<% if is_following(user) %>
-							<%= button_to 'Unfollow', {:controller => "follows", :action => "destroy", :follower_id => @logged_in_user.id, :following_id=> user.id, :id =>@logged_in_user.id} , :method=>:delete  %>			
+							<%= button_to 'Unfollow', {:controller => "follows", :action => "destroy", :id => @logged_in_user.id, :following_id=> user.id} , :method=>:delete  %>			
 						<% else %>
 							<%= button_to 'Follow', {:controller => "follows", :action => "create", :follower_id => @logged_in_user.id, :following_id=> user.id} , :method=>:post  %>			
 						<% end %>
