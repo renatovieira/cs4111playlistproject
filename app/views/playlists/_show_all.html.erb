@@ -38,7 +38,7 @@
 							<td><%= button_to 'Stop collaborating', {:controller => "collaborates_ins", :action => "destroy", :id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:delete%></td>
 						<% end %>
 					<% elsif requested_access(playlist) %>
-						<td><%= 'Requested access. Waiting for approval.' %><%= button_to 'Cancel', {:controller => "request_access_tos", :action => "destroy", :id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:delete%>	</td>
+						<td><%= 'Requested access. Waiting for approval.' %><%= button_to 'Cancel', {:controller => "request_access_tos", :action => "destroy", :id => @logged_in_user.id, :playlist_id=> playlist.id, :type => 'cancel'} , :method=>:delete%>	</td>
 					<% else %>
 						<td><%= button_to 'Request access', {:controller => "request_access_tos", :action => "create", :user_id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:post  %></td>
 					<% end %>

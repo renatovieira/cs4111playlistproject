@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   resources :albums
   resources :genres
   
-  get 'my_playlists/' => 'playlists#my_playlists'  
+  get 'my_playlists/' => 'playlists#my_playlists' 
+  
+  get 'requests/' => 'request_access_tos#index' 
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

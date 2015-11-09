@@ -56,7 +56,16 @@ class RequestAccessTosController < ApplicationController
   def destroy
     @request_access_to.destroy
     respond_to do |format|
-      format.html { redirect_to '/playlists', notice: "Cancelled request." }
+      if params[:type] == 'cancel'
+        format.html { redirect_to '/playlists', notice: "Cancelled request." }
+      elsif params[:type] == 'accept'
+          @collaborates_in = CollaboratesIn.new(user_id: @request_access_to.user_id, playlist_id: @request_access_to.playlist_id)
+          if @collaborates_in.save
+            format.html { redirect_to '/requests', notice: "Accepted request." }
+          end
+      else
+        format.html { redirect_to '/requests', notice: "Rejected request." }
+      end
       format.json { head :no_content }
     end
   end
