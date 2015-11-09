@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_collaborates_in_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Collaborates in
+  <% end %>
+  <h1>Listing collaborates_ins</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>User</th>
+            <th>Playlist</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @collaborates_ins) do |collaborates_in| %>
+            <td><%= collaborates_in.user_id %></td>
+            <td><%= collaborates_in.playlist_id %></td>
+            <td><%= link_to 'Show', collaborates_in %></td>
+        <td><%= link_to 'Edit', edit_collaborates_in_path(collaborates_in) %></td>
+        <td><%= link_to 'Destroy', collaborates_in, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

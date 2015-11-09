@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to collaborates_ins_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_collaborates_in_path(@collaborates_in), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show collaborates_in</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>User:</dt>
+  <dd><%= @collaborates_in.user_id %></dd>
+
+  <dt>Playlist:</dt>
+  <dd><%= @collaborates_in.playlist_id %></dd>
+
+</dl>

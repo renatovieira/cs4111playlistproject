@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :collaborates_ins
   resources :request_access_tos
   resources :playlists
   resources :songs

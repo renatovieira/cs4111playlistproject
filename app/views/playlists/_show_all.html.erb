@@ -3,7 +3,11 @@
     <span class="glyphicon glyphicon-plus"></span>
     New Playlist
   <% end %>
-  <h1>Listing playlists</h1>
+	<% if all_playlists %>
+  	<h1>Listing playlists</h1>
+	<% else %>
+  	<h1>Listing my playlists</h1>
+	<% end %>
 </div>
 
 <div class="table-responsive">
@@ -28,7 +32,11 @@
 	        <td><%= playlist.songs.size %></td>
 					
 					<% if is_collaborator(playlist) %>
-						<td><%= 'Collaborating' %></td>
+						<% if all_playlists %>
+							<td><%= 'Collaborating' %></td>
+						<% else %>
+							<td><%= button_to 'Stop collaborating', {:controller => "collaborates_ins", :action => "destroy", :id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:delete%></td>
+						<% end %>
 					<% elsif requested_access(playlist) %>
 						<td><%= 'Requested access. Waiting for approval.' %><%= button_to 'Cancel', {:controller => "request_access_tos", :action => "destroy", :id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:delete%>	</td>
 					<% else %>
