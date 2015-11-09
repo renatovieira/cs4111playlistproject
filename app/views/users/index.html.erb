@@ -1,48 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+	<% if @is_admin %>
+	  <%= link_to new_user_path, class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-plus"></span>
+	    New User
+	  <% end %>
+	<% end %>
+  <h1>Listing users</h1>
+</div>
 
-<h1>Listing Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>First name</th>
-      <th>Last name</th>
-			<th>Followers</th>
-			<th>Following</th>
-			<th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= link_to user.username, user %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.followers.size %></td>
-        <td><%= user.following.size %></td>
-				<td>
-					<% if user != @logged_in_user %>
-						<% if is_following(user) %>
-							<%= button_to 'Unfollow', {:controller => "follows", :action => "destroy", :id => @logged_in_user.id, :following_id=> user.id} , :method=>:delete  %>			
-						<% else %>
-							<%= button_to 'Follow', {:controller => "follows", :action => "create", :follower_id => @logged_in_user.id, :following_id=> user.id} , :method=>:post  %>			
-						<% end %>
-					<% end %>
-				</td>
-	  		<% if @is_admin %>
-        	<td><%= link_to 'Edit', edit_user_path(user) %></td>
-        	<td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Username</th>
+            <th>First name</th>
+            <th>Last name</th>
+						<th>Followers</th>
+						<th>Following</th>
+						<th>Status</th>
+			  <% if @is_admin %>				
+	        <th></th>
+	        <th></th>
 				<% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<% if @is_admin %>
-	<%= link_to 'New User', new_user_path %>
-<% end %>
+    <tbody>
+      <%= content_tag_for(:tr, @users) do |user| %>
+        		<td><%= link_to user.username, user %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+		        <td><%= user.followers.size %></td>
+		        <td><%= user.following.size %></td>
+						<td>
+							<% if user != @logged_in_user %>
+								<% if is_following(user) %>
+									<%= button_to 'Unfollow', {:controller => "follows", :action => "destroy", :id => @logged_in_user.id, :following_id=> user.id} , :method=>:delete  %>			
+								<% else %>
+									<%= button_to 'Follow', {:controller => "follows", :action => "create", :follower_id => @logged_in_user.id, :following_id=> user.id} , :method=>:post  %>			
+								<% end %>
+							<% end %>
+						</td>
+			  <% if @is_admin %>		
+	        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+	        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,38 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+	<% if @is_admin %>
+	  <%= link_to new_song_path, class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-plus"></span>
+	    New Song
+	  <% end %>
+	<% end %>
+  <h1>Listing songs</h1>
+</div>
 
-<h1>Listing Songs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Duration</th>
-      <th>Url</th>
-	  	<th>Artist</th>
-	  	<th>Album</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @songs.each do |song| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= link_to song.title, song %></td>
-        <td><%= Time.at(song.duration).utc.strftime("%M:%S") %></td>
-        <td><%= song.url %></td>
-        <td><%= song.artists.join(',') %></td>
-				<td><%= song.albums.join(',') %></td>
-	  		<% if @is_admin %>
+            <th>Title</th>
+				  	<th>Artist</th>
+				  	<th>Album</th>
+            <th>Duration</th>
+			      <th>Url</th>
+				<% if @is_admin %>		
+        	<th></th>
+        	<th></th>
+				<% end %>			
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @songs) do |song| %>
+        		<td><%= link_to song.title, song %></td>
+		        <td><%= song.artists.join(',') %></td>
+						<td><%= song.albums.join(',') %></td>
+        		<td><%= Time.at(song.duration).utc.strftime("%M:%S") %></td>
+		        <td><%= song.url %></td>
+				<% if @is_admin %>		
         	<td><%= link_to 'Edit', edit_song_path(song) %></td>
         	<td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				<% end %>	
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if @is_admin %>
-	<%= link_to 'New Song', new_song_path %>
-<% end %>
+				<% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

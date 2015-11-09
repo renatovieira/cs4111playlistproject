@@ -1,6 +1,13 @@
-<h1>Editing Playlist</h1>
+<div class="page-header">
+  <%= link_to playlists_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @playlist, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing playlist</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @playlist %> |
-<%= link_to 'Back', playlists_path %>

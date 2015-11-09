@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :playlists
+  resources :songs
+  resources :genres
+  resources :users
   resources :artists
   resources :albums
   resources :countries

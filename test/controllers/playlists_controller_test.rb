@@ -18,7 +18,7 @@ class PlaylistsControllerTest < ActionController::TestCase
 
   test "should create playlist" do
     assert_difference('Playlist.count') do
-      post :create, playlist: { is_public: @playlist.is_public, name: @playlist.name }
+      post :create, playlist: { name: @playlist.name }
     end
 
     assert_redirected_to playlist_path(assigns(:playlist))
@@ -35,7 +35,7 @@ class PlaylistsControllerTest < ActionController::TestCase
   end
 
   test "should update playlist" do
-    patch :update, id: @playlist, playlist: { is_public: @playlist.is_public, name: @playlist.name }
+    patch :update, id: @playlist, playlist: { name: @playlist.name }
     assert_redirected_to playlist_path(assigns(:playlist))
   end
 

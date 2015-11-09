@@ -1,21 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_playlist_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Playlist
+  <% end %>
+  <h1>Listing playlists</h1>
+</div>
 
-<h1>Listing Playlists</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+						<th>Number of songs</th>
+						<th>Collaborator status</th>
+	  		<% if @is_admin %>		
+	        <th></th>
+	        <th></th>
+				<% end %>
+      </tr>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-			<th>Number of songs</th>
-			<th>Collaborator status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @playlists.each do |playlist| %>
-			<% if playlist.is_public or @is_admin or @logged_in_user.playlists.include? (playlist)  %>
-	      <tr>
+    <tbody>
+      <%= content_tag_for(:tr, @playlists) do |playlist| %>
+				<% if playlist.is_public or @is_admin or @logged_in_user.playlists.include? (playlist)  %>
+			
 	        <td><%= link_to playlist.name, playlist %></td>
 	        <td><%= playlist.songs.size %></td>
 					
@@ -26,17 +34,12 @@
 					<% else %>
 						<td><%= 'Request Access' %></td>
 					<% end %>
-					
-		  		<% if @is_admin %>
-	        	<td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
-	        	<td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-					<% end %>	
-	      </tr>
-			<% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Playlist', new_playlist_path %>
+			  	<% if @is_admin %>	
+		        <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
+		        <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<% end %>
+				<% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

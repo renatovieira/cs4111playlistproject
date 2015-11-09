@@ -1,39 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to playlists_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+	<% if @is_admin %>
+	  <%= link_to edit_playlist_path(@playlist), class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-pencil"></span>
+	    Edit
+	  <% end %>
+	<% end %>
+  <h1>Show playlist</h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @playlist.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @playlist.name %></dd>
 
-<% if @playlist.is_public %>
-	<p>
-  	  <strong>Public</strong>
-	</p>
-<% end %>
+	<% if @playlist.is_public %>
+	  <dt>Public</dt><dd></dd>
+	<% end %>
 
-<p>
-	<strong>Songs:</strong>
-	<ul>
+	<dt>Songs:</dt>
+	<dd><ul>
 		<% @playlist.songs.each do |song| %>
 			<li>
     			<%= link_to song.title, song %>
 			</li>
 		<% end %>
-	</ul>
-</p>
+	</ul></dd>
 
-<p>
-	<strong>Collaborators:</strong>
-	<ul>
+	<dt>Collaborators:</dt>
+	<dd><ul>
 		<% @playlist.collaborators.each do |collaborator| %>
 			<li>
     			<%= link_to collaborator.username, collaborator %>
 			</li>
 		<% end %>
-	</ul>
-</p>
+	</ul></dd>
 
-<% if @is_admin %>
-	<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<% end %>
-<%= link_to 'Back', playlists_path %>
+
+</dl>

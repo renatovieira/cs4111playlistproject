@@ -1,42 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to songs_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+	<% if @is_admin %>	
+	  <%= link_to edit_song_path(@song), class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-pencil"></span>
+	    Edit
+	  <% end %>
+	<% end %>
+  <h1>Show song</h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @song.title %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @song.title %></dd>
+	
+  <dt>Duration:</dt>
+  <dd><%= Time.at(@song.duration).utc.strftime("%M:%S") %></dd>
 
-<p>
-  <strong>Duration:</strong>
-  <%= Time.at(@song.duration).utc.strftime("%M:%S") %>
-</p>
+  <dt>Artist:</dt>
+  <dd><%= @song.artists.join(',') %></dd>
 
-<p>
-  <strong>Artist:</strong>
-  <%= @song.artists.join(',') %>
-</p>
+  <dt>Album:</dt>
+  <dd><%= @song.albums.join(',') %></dd>
 
-<p>
-  <strong>Album:</strong>
-  <%= @song.albums.join(',') %>
-</p>
+	<% if @song.source == 'Youtube' %>
+		<dt></dt>
+		<dd>
+			<iframe width="420" height="315" src= <%= "#{@song.embed_url}" %>>
+			</iframe>
+		</dd>
+	<% end %>
 
-<% if @song.source == 'Youtube' %>
-	<iframe width="420" height="315" src= <%= "#{@song.embed_url}" %>>
-	</iframe>
-<% end %>
-
-<p>
-	<strong>Genres:</strong>
-	<ul>
+	<dt>Genres:</dt>
+	<dd><ul>
 		<% @song.genres.each do |genre| %>
 			<li>
     			<%= link_to genre.name, genre %>
 			</li>
 		<% end %>
-	</ul>
-</p>
+	</ul></dd>
 
-<% if @is_admin %>
-	<%= link_to 'Edit', edit_song_path(@song) %> |
-<% end %>
-<%= link_to 'Back', songs_path %>
+</dl>

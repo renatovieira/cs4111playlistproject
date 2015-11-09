@@ -1,48 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to users_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+	<% if @is_admin %>
+	  <%= link_to edit_user_path(@user), class: 'btn btn-primary' do %>
+	    <span class="glyphicon glyphicon-pencil"></span>
+	    Edit
+	  <% end %>
+	<% end %>
+  <h1>Show user</h1>
+</div>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Username:</dt>
+  <dd><%= @user.username %></dd>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <dt>First name:</dt>
+  <dd><%= @user.first_name %></dd>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <dt>Last name:</dt>
+  <dd><%= @user.last_name %></dd>
 
-<p>
-	<strong>Collaborates in:</strong>
-	<%= @user.playlists.join(',') %>
-</p>
+	<dt>Collaborates in:</dt>
+	<dd><ul>
+		<% @user.playlists.each do |playlist| %>
+			<li>
+    			<%= link_to playlist.name, playlist %>
+			</li>
+		<% end %>
+	</ul></dd>
 
-<p>
-	<strong>Following:</strong>
-	<ul>
+	<dt>Following:</dt>
+	<dd><ul>
 		<% @user.following.each do |followed| %>
 			<li>
     			<%= link_to followed.username, followed %>
 			</li>
 		<% end %>
-	</ul>
-</p>
+	</ul></dd>
 
-<p>
-	<strong>Followers:</strong>
-	<ul>
+	<dt>Followers:</dt>
+	<dd><ul>
 		<% @user.followers.each do |follower| %>
 			<li>
     			<%= link_to follower.username, follower %>
 			</li>
 		<% end %>
-	</ul>
-</p>
+	</ul></dd>
 
-<% if @is_admin %>
-	<%= link_to 'Edit', edit_user_path(@user) %> |
-<% end %>
-<%= link_to 'Back', users_path %>
+</dl>

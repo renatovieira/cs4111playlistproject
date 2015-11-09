@@ -18,7 +18,7 @@ class SongsControllerTest < ActionController::TestCase
 
   test "should create song" do
     assert_difference('Song.count') do
-      post :create, song: { duration: @song.duration, source: @song.source, thumbnail: @song.thumbnail, title: @song.title, url: @song.url }
+      post :create, song: { duration: @song.duration, title: @song.title }
     end
 
     assert_redirected_to song_path(assigns(:song))
@@ -35,7 +35,7 @@ class SongsControllerTest < ActionController::TestCase
   end
 
   test "should update song" do
-    patch :update, id: @song, song: { duration: @song.duration, source: @song.source, thumbnail: @song.thumbnail, title: @song.title, url: @song.url }
+    patch :update, id: @song, song: { duration: @song.duration, title: @song.title }
     assert_redirected_to song_path(assigns(:song))
   end
 
