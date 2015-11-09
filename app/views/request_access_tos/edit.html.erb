@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to request_access_tos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @request_access_to, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing request_access_to</h1>
+</div>
+
+<%= render 'form' %>

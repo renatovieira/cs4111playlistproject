@@ -30,9 +30,9 @@
 					<% if is_collaborator(playlist) %>
 						<td><%= 'Collaborating' %></td>
 					<% elsif requested_access(playlist) %>
-						<td><%= 'Requested access. Waiting for approval.' %></td>
+						<td><%= 'Requested access. Waiting for approval.' %><%= button_to 'Cancel', {:controller => "request_access_tos", :action => "destroy", :id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:delete%>	</td>
 					<% else %>
-						<td><%= 'Request Access' %></td>
+						<td><%= button_to 'Request access', {:controller => "request_access_tos", :action => "create", :user_id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:post  %></td>
 					<% end %>
 			  	<% if @is_admin %>	
 		        <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
