@@ -41,5 +41,8 @@
 			</li>
 		<% end %>
 	</ul></dd>
+	
+	<dt>Add to playlist</dt>
+	<dd><%= render partial: 'contains/form', :locals => {:song_id => @song.id} %></dd>
 
 </dl>

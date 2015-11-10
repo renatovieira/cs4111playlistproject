@@ -28,7 +28,7 @@ class ContainsController < ApplicationController
 
     respond_to do |format|
       if @contain.save
-        format.html { redirect_to '/admin', notice: 'Association created.' }
+        format.html { redirect_to Playlist.find(@contain.playlist_id), notice: "Added #{Song.find([@contain.song_id]).first.title}." }
         format.json { render :show, status: :created, location: @contain }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class ContainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contain_params
-      params.permit(:playlist_id, :song_id)
+      params.require(:contain).permit(:playlist_id, :song_id)
     end
 end
