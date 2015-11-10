@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :songs
+  resources :playlists
+  resources :song_performed_bies
+  resources :song_belongs_tos
+  resources :included_ins
+  resources :contains
+  resources :artist_belong_tos
+  resources :artist_belongs_tos
   resources :collaborates_ins
   resources :request_access_tos
   resources :playlists
@@ -21,6 +29,8 @@ Rails.application.routes.draw do
   get 'my_playlists/' => 'playlists#my_playlists' 
   
   get 'requests/' => 'request_access_tos#index' 
+  
+  get 'admin/' => 'admin#new'   
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

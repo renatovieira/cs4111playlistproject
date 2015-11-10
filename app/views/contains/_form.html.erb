@@ -1,0 +1,32 @@
+<%= form_for(@contain, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @contain.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@contain.errors.count, "error") %> prohibited this contain from being saved:</h4>
+
+      <ul>
+      <% @contain.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :playlist_id, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+			<%= f.collection_select(:playlist_id, Playlist.all.sort_by {|obj| obj.name}, :id, :name)  %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :song_id, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+			<%= f.collection_select(:song_id, Song.all.sort_by {|obj| obj.title}, :id, :title)  %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Create association", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

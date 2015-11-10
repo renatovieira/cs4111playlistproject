@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to song_performed_bies_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @song_performed_by, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing song_performed_by</h1>
+</div>
+
+<%= render 'form' %>

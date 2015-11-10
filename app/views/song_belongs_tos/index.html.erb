@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_song_belongs_to_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Song belongs to
+  <% end %>
+  <h1>Listing song_belongs_tos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Song</th>
+            <th>Genre</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @song_belongs_tos) do |song_belongs_to| %>
+            <td><%= song_belongs_to.song_id %></td>
+            <td><%= song_belongs_to.genre_id %></td>
+            <td><%= link_to 'Show', song_belongs_to %></td>
+        <td><%= link_to 'Edit', edit_song_belongs_to_path(song_belongs_to) %></td>
+        <td><%= link_to 'Destroy', song_belongs_to, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

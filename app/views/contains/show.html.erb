@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to contains_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_contain_path(@contain), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show contain</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Playlist:</dt>
+  <dd><%= @contain.playlist_id %></dd>
+
+  <dt>Song:</dt>
+  <dd><%= @contain.song_id %></dd>
+
+</dl>

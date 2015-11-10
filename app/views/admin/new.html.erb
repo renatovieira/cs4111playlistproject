@@ -1,0 +1,8 @@
+<% if @is_admin %>
+	<%= render 'artist_belong_tos/form' %>
+	<%= render 'included_ins/form' %>
+	<%= render 'song_belongs_tos/form' %>
+	<%= render 'song_performed_bies/form' %>
+<% else %>
+	<p>Permission denied, you need to be an admin to see this page.</p>
+<% end %>

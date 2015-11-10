@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_artist_belong_to_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Artist belong to
+  <% end %>
+  <h1>Listing artist_belong_tos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @artist_belong_tos) do |artist_belong_to| %>
+            <td><%= artist_belong_to.artist_id %></td>
+            <td><%= artist_belong_to.genre_id %></td>
+            <td><%= link_to 'Show', artist_belong_to %></td>
+        <td><%= link_to 'Edit', edit_artist_belong_to_path(artist_belong_to) %></td>
+        <td><%= link_to 'Destroy', artist_belong_to, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

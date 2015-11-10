@@ -1,0 +1,2 @@
+module ArtistBelongTosHelper
+end

@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_song_performed_by_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Song performed by
+  <% end %>
+  <h1>Listing song_performed_bies</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Song</th>
+            <th>Artist</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @song_performed_bies) do |song_performed_by| %>
+            <td><%= song_performed_by.song_id %></td>
+            <td><%= song_performed_by.artist_id %></td>
+            <td><%= link_to 'Show', song_performed_by %></td>
+        <td><%= link_to 'Edit', edit_song_performed_by_path(song_performed_by) %></td>
+        <td><%= link_to 'Destroy', song_performed_by, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

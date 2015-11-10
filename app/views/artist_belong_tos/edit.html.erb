@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to artist_belong_tos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @artist_belong_to, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing artist_belong_to</h1>
+</div>
+
+<%= render 'form' %>
