@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-		<% if @is_admin %>
+		<% if is_admin? %>
 	  <%= link_to edit_album_path(@album), class: 'btn btn-primary' do %>
 	    <span class="glyphicon glyphicon-pencil"></span>
 	    Edit

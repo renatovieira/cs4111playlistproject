@@ -17,7 +17,7 @@
             <th>Name</th>
 						<th>Number of songs</th>
 						<th>Collaborator status</th>
-	  		<% if @is_admin %>		
+	  		<% if is_admin? %>		
 	        <th></th>
 	        <th></th>
 				<% end %>
@@ -26,7 +26,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @playlists) do |playlist| %>
-				<% if playlist.is_public or @is_admin or @logged_in_user.playlists.include? (playlist)  %>
+				<% if playlist.is_public or is_admin? or current_user.playlists.include? (playlist)  %>
 			
 	        <td><%= link_to playlist.name, playlist %></td>
 	        <td><%= playlist.songs.size %></td>
@@ -42,7 +42,7 @@
 					<% else %>
 						<td><%= button_to 'Request access', {:controller => "request_access_tos", :action => "create", :user_id => @logged_in_user.id, :playlist_id=> playlist.id} , :method=>:post  %></td>
 					<% end %>
-			  	<% if @is_admin %>	
+			  	<% if is_admin? %>	
 		        <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
 		        <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					<% end %>

@@ -1,5 +1,5 @@
 <div class="page-header">
-	<% if @is_admin %>
+	<% if is_admin? %>
 	  <%= link_to new_album_path, class: 'btn btn-primary' do %>
 	    <span class="glyphicon glyphicon-plus"></span>
 	    New Album
@@ -15,7 +15,7 @@
             <th>Title</th>
 						<th>Number of Songs</th>
             <th>Year</th>
-				<% if @is_admin %>	
+				<% if is_admin? %>	
 					<th></th>
         	<th></th>
 			  <% end %>
@@ -27,7 +27,7 @@
 						<td><%= link_to album.title, album %></td>
 		        <td><%= album.songs.size %></td>
             <td><%= album.year %></td>
-			  <% if @is_admin %>		
+			  <% if is_admin? %>		
         	<td><%= link_to 'Edit', edit_album_path(album) %></td>
         	<td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	  		<% end %>

@@ -1,5 +1,5 @@
 <div class="page-header">
-	<% if @is_admin %>
+	<% if is_admin? %>
 	
 	  <%= link_to new_country_path, class: 'btn btn-primary' do %>
 	    <span class="glyphicon glyphicon-plus"></span>
@@ -17,7 +17,7 @@
       <tr>
             <th>Name</th>
 			      <th>Number of Artists</th>
-						<% if @is_admin %>
+						<% if is_admin? %>
 							<th></th>
 							<th></th>
 						<% end %>
@@ -28,7 +28,7 @@
       <%= content_tag_for(:tr, @countries) do |country| %>
         		<td><%= link_to country.name, country %></td>
 						<td><%= Artist.where(country_id: country.id).size %>
-						<% if @is_admin %>
+						<% if is_admin? %>
 		        	<td><%= link_to 'Edit', edit_country_path(country) %></td>
 		        	<td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 						<% end %>

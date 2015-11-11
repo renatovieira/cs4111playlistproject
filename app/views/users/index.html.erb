@@ -1,5 +1,5 @@
 <div class="page-header">
-	<% if @is_admin %>
+	<% if is_admin? %>
 	  <%= link_to new_user_path, class: 'btn btn-primary' do %>
 	    <span class="glyphicon glyphicon-plus"></span>
 	    New User
@@ -18,7 +18,7 @@
 						<th>Followers</th>
 						<th>Following</th>
 						<th>Status</th>
-			  <% if @is_admin %>				
+			  <% if is_admin? %>				
 	        <th></th>
 	        <th></th>
 				<% end %>
@@ -41,7 +41,7 @@
 								<% end %>
 							<% end %>
 						</td>
-			  <% if @is_admin %>		
+			  <% if is_admin? %>		
 	        <td><%= link_to 'Edit', edit_user_path(user) %></td>
 	        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 				<% end %>
