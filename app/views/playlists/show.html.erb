@@ -21,13 +21,31 @@
 	<% end %>
 
 	<dt>Songs:</dt>
-	<dd><ul>
-		<% @playlist.songs.each do |song| %>
-			<li>
-    			<%= link_to song.title, song %>
-			</li>
-		<% end %>
-	</ul></dd>
+	<dd>
+		<div class="table-responsive">
+		  <table class="table table-striped table-bordered table-hover">
+		    <thead>
+		      <tr>
+		            <th>Title</th>
+						  	<th>Artist</th>
+						  	<th>Album</th>	
+								<th></th>
+		      </tr>
+		    </thead>
+
+		    <tbody>
+		      <%= content_tag_for(:tr, @playlist.songs) do |song| %>
+		        		<td><%= link_to song.title, song %></td>
+				        <td><%= song.artists.join(',') %></td>
+								<td><%= song.albums.join(',') %></td>
+								<td>
+									<%= button_to 'Remove', {:controller => "contains", :action => "destroy", :id => song.id, :playlist_id=> @playlist.id} , :method=>:delete  %>
+								</td>		
+		      <% end %>
+		    </tbody>
+		  </table>
+		</div>
+	</dd>
 
 	<dt>Collaborators:</dt>
 	<dd><ul>

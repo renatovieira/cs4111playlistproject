@@ -57,7 +57,7 @@ class ContainsController < ApplicationController
   def destroy
     @contain.destroy
     respond_to do |format|
-      format.html { redirect_to contains_url, notice: 'Contain was successfully destroyed.' }
+      format.html { redirect_to Playlist.find(@contain.playlist_id), notice: "Removed #{Song.find([@contain.song_id]).first.title}." }
       format.json { head :no_content }
     end
   end
@@ -65,7 +65,7 @@ class ContainsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contain
-      @contain = Contain.find([params[:id], params[:song_id]])
+      @contain = Contain.find([params[:id], params[:playlist_id]])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
