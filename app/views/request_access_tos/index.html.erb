@@ -15,7 +15,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @request_access_tos) do |request_access_to| %>
-				<% if Playlist.find(request_access_to.playlist_id).collaborators.include? (@logged_in_user) %>
+				<% if Playlist.find(request_access_to.playlist_id).collaborators.include? (current_user) %>
             <td><%= User.find(request_access_to.user_id).username %></td>
             <td><%= Playlist.find(request_access_to.playlist_id).name %></td>
 						<td><%= request_access_to.request_date %></td>

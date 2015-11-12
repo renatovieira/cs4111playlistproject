@@ -1,4 +1,5 @@
 class SongBelongsTosController < ApplicationController
+  before_action :logged_in_user
   before_action :set_song_belongs_to, only: [:show, :edit, :update, :destroy]
 
   # GET /song_belongs_tos

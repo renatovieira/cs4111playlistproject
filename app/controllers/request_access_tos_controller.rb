@@ -1,4 +1,5 @@
 class RequestAccessTosController < ApplicationController
+  before_action :logged_in_user
   before_action :set_request_access_to, only: [:show, :edit, :update, :destroy]
 
   # GET /request_access_tos

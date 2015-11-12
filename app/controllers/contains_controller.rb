@@ -1,4 +1,5 @@
 class ContainsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_contain, only: [:show, :edit, :update, :destroy]
 
   # GET /contains

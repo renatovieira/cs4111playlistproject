@@ -1,4 +1,5 @@
 class FollowsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_follow, only: [:show, :edit, :update, :destroy]
 
   # GET /follows

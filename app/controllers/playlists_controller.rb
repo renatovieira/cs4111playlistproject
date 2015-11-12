@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
   helper_method :requested_access, :is_collaborator
 
@@ -9,7 +10,7 @@ class PlaylistsController < ApplicationController
   end
   
   def my_playlists
-    @playlists = @logged_in_user.playlists.sort_by {|obj| obj.name}
+    @playlists = current_user.playlists.sort_by {|obj| obj.name}
   end
 
   # GET /playlists/1
@@ -33,7 +34,7 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.save
-        CollaboratesIn.create(user: @logged_in_user, playlist: @playlist)
+        CollaboratesIn.create(user: current_user, playlist: @playlist)
         
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
         format.json { render :show, status: :created, location: @playlist }
@@ -69,11 +70,11 @@ class PlaylistsController < ApplicationController
   end
   
   def is_collaborator(playlist)
-    @logged_in_user.playlists.include? (playlist)
+    current_user.playlists.include? (playlist)
   end
   
   def requested_access(playlist)
-    @logged_in_user.requested_playlists.include? (playlist)
+    current_user.requested_playlists.include? (playlist)
   end
 
   private

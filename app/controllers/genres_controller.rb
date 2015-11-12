@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  before_action :logged_in_user
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   # GET /genres

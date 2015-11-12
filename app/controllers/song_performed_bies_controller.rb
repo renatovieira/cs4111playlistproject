@@ -1,4 +1,5 @@
 class SongPerformedBiesController < ApplicationController
+  before_action :logged_in_user
   before_action :set_song_performed_by, only: [:show, :edit, :update, :destroy]
 
   # GET /song_performed_bies

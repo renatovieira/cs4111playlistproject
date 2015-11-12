@@ -1,4 +1,5 @@
 class IncludedInsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_included_in, only: [:show, :edit, :update, :destroy]
 
   # GET /included_ins

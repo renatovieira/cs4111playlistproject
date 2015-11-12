@@ -13,6 +13,24 @@ module SessionsHelper
   end
 
   def is_admin?
-  	current_user.admin
+    if current_user.nil?
+      return false
+    else
+      if current_user.admin
+        return true
+      else
+        return false
+      end
+    end
   end
+
+  def current_user?(user)
+    user == current_user
+  end
+
+  def log_out
+    session.delete(:username)
+    @current_user = nil
+  end
+
 end

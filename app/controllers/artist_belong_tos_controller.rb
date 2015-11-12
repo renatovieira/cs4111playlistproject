@@ -1,4 +1,5 @@
 class ArtistBelongTosController < ApplicationController
+  before_action :logged_in_user
   before_action :set_artist_belong_to, only: [:show, :edit, :update, :destroy]
 
   # GET /artist_belong_tos

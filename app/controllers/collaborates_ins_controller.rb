@@ -1,4 +1,5 @@
 class CollaboratesInsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_collaborates_in, only: [:show, :edit, :update, :destroy]
 
   # GET /collaborates_ins

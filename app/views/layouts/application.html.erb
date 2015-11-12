@@ -56,8 +56,11 @@
 
     <%= yield %>
   </div>
-	<div class="container">
-		Logged in as <%= @logged_in_user.username %>
-	</div>
+  <% if logged_in? %>
+  	<div class="container">
+  		Logged in as <%= current_user.username %>
+      <%= link_to "(Sign out)", logout_path, :method => :delete %>
+  	</div>
+  <% end %>
 </body>
 </html>
