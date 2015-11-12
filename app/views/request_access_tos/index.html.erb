@@ -10,6 +10,7 @@
             <th>Playlist</th>
 						<th>Date</th>
 						<th></th>
+						<th></th>
       </tr>
     </thead>
 
@@ -19,7 +20,8 @@
             <td><%= User.find(request_access_to.user_id).username %></td>
             <td><%= Playlist.find(request_access_to.playlist_id).name %></td>
 						<td><%= request_access_to.request_date %></td>
-            <td><%= button_to 'Accept', {:controller => "request_access_tos", :action => "destroy", :id => request_access_to.user_id, :playlist_id=> request_access_to.playlist_id, :type => 'accept'} , :method=>:delete %> <%= button_to 'Deny', {:controller => "request_access_tos", :action => "destroy", :id => request_access_to.user_id, :playlist_id=> request_access_to.playlist_id, :type => 'deny'} , :method=>:delete %></td>
+            <td><%= button_to 'Accept', {:controller => "request_access_tos", :action => "destroy", :id => request_access_to.user_id, :playlist_id=> request_access_to.playlist_id, :type => 'accept'} , :method=>:delete %></td>
+						<td><%= button_to 'Deny', {:controller => "request_access_tos", :action => "destroy", :id => request_access_to.user_id, :playlist_id=> request_access_to.playlist_id, :type => 'deny'} , :method=>:delete %></td>
 				<% end %>
       <% end %>
     </tbody>
